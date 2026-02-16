@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bratec</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Product+Sans:wght@400;500&display=swap');
+
+        :root {
+            --google-blue: #4285f4;
+            --google-red: #ea4335;
+            --google-yellow: #fbbc05;
+            --google-green: #34a853;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Product Sans', Arial, sans-serif;
+            background: #fff;
+            color: #202124;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* ==================== HEADER ==================== */
+        header {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            padding: 14px 24px;
+            gap: 20px;
+            font-size: 14px;
+        }
+
+        .header-link {
+            color: #202124;
+            text-decoration: none;
+            padding: 8px 12px;
+            border-radius: 4px;
+        }
+
+        .header-link:hover {
+            text-decoration: underline;
+        }
+
+        .apps-icon {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .apps-icon:hover {
+            background: rgba(0, 0, 0, 0.05);
+        }
+
+        .avatar {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: #8ab4f8;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 500;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        /* ==================== HOMEPAGE ==================== */
+        .homepage {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding-bottom: 120px;
+        }
+
+        .logo {
+            font-size: 92px;
+            font-weight: 400;
+            letter-spacing: -2px;
+            margin-bottom: 28px;
+            user-select: none;
+        }
+
+        .logo span:nth-child(1) { color: var(--google-blue); }
+        .logo span:nth-child(2) { color: var(--google-red); }
+        .logo span:nth-child(3) { color: var(--google-yellow); }
+        .logo span:nth-child(4) { color: var(--google-blue); }
+        .logo span:nth-child(5) { color: var(--google-green); }
+        .logo span:nth-child(6) { color: var(--google-red); }
+
+        .search-container {
+            width: 580px;
+            position: relative;
+            margin-bottom: 30px;
+        }
+
+        .search-bar {
+            width: 100%;
+            height: 46px;
+            border: 1px solid #dfe1e5;
+            border-radius: 50px;
+            padding: 0 50px 0 50px;
+            font-size: 17px;
+            outline: none;
+            box-shadow: 0 1px 6px rgba(32, 33, 36, 0.15);
+            transition: all 0.2s;
+        }
+
+        .search-bar:hover {
+            box-shadow: 0 1px 6px rgba(32, 33, 36, 0.28);
+        }
+
+        .search-bar:focus {
+            box-shadow: 0 1px 6px rgba(32, 33, 36, 0.28);
+        }
+
+        .search-icons {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            color: #9aa0a6;
+        }
+
+        .search-icons-left {
+            left: 18px;
+        }
+
+        .search-icons-right {
+            right: 18px;
+        }
+
+        .search-icons i {
+            font-size: 20px;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+
+        .search-icons i:hover {
+            color: #4285f4;
+        }
+
+        .mic-icon {
+            color: #4285f4 !important;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+        }
+
+        .btn {
+            background: #f8f9fa;
+            border: 1px solid #f8f9fa;
+            border-radius: 4px;
+            padding: 12px 24px;
+            font-size: 14px;
+            color: #3c4043;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn:hover {
+            box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+            border: 1px solid #dadce0;
+        }
+
+        /* ==================== RESULTS PAGE ==================== */
+        .results-page {
+            display: none;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .results-header {
+            display: flex;
+            align-items: center;
+            padding: 12px 30px;
+            border-bottom: 1px solid #dadce0;
+            background: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .results-logo {
+            font-size: 28px;
+            font-weight: 400;
+            margin-right: 30px;
+            cursor: pointer;
+        }
+
+        .results-logo span:nth-child(1) { color: var(--google-blue); }
+        .results-logo span:nth-child(2) { color: var(--google-red); }
+        .results-logo span:nth-child(3) { color: var(--google-yellow); }
+        .results-logo span:nth-child(4) { color: var(--google-blue); }
+        .results-logo span:nth-child(5) { color: var(--google-green); }
+        .results-logo span:nth-child(6) { color: var(--google-red); }
+
+        .results-search-container {
+            flex: 1;
+            max-width: 680px;
+            position: relative;
+        }
+
+        .results-search-bar {
+            width: 100%;
+            height: 44px;
+            border: 1px solid #dfe1e5;
+            border-radius: 50px;
+            padding: 0 45px 0 50px;
+            font-size: 16px;
+            outline: none;
+        }
+
+        .results-icons {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #9aa0a6;
+        }
+
+        .results-icons-left { left: 18px; }
+        .results-icons-right { right: 14px; }
+
+        .results-content {
+            padding: 20px 40px;
+            max-width: 680px;
+        }
+
+        .results-stats {
+            color: #70757a;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        .result-item {
+            margin-bottom: 32px;
+        }
+
+        .result-url {
+            color: #006621;
+            font-size: 14px;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .result-url:hover {
+            text-decoration: underline;
+        }
+
+        .result-title {
+            font-size: 20px;
+            color: #1a0dab;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 6px;
+            line-height: 1.3;
+        }
+
+        .result-title:hover {
+            text-decoration: underline;
+        }
+
+        .result-snippet {
+            color: #4d5156;
+            font-size: 14px;
+            line-height: 1.4;
+        }
+
+        .no-results {
+            font-size: 18px;
+            color: #202124;
+            margin-top: 40px;
+        }
+
+        /* ==================== FOOTER ==================== */
+        footer {
+            margin-top: auto;
+            background: #f2f2f2;
+            color: #70757a;
+            font-size: 14px;
+        }
+
+        .footer-top {
+            padding: 12px 30px;
+            border-top: 1px solid #dadce0;
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 30px;
+            border-top: 1px solid #dadce0;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .footer-link {
+            color: #70757a;
+            text-decoration: none;
+            padding: 8px 12px;
+        }
+
+        .footer-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsivo */
+        @media (max-width: 700px) {
+            .search-container {
+                width: 90%;
+            }
+            .logo {
+                font-size: 72px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ==================== HOMEPAGE ==================== -->
+    <div id="homepage">
+        <header>
+            <a href="#" class="header-link">Gmail</a>
+            <a href="#" class="header-link">Imagens</a>
+            <div class="apps-icon">
+                <i class="fa-solid fa-grip-vertical" style="font-size: 22px; color: #5f6368;"></i>
+            </div>
+            <div class="avatar">D</div>
+        </header>
+
+        <div class="homepage">
+            <div class="logo">
+                <span>B</span><span>r</span><span>a</span><span>t</span><span>e</span><span>c</span>
+            </div>
+
+            <div class="search-container">
+                <input type="text" id="search-input" class="search-bar" placeholder="Pesquise no Bratec" autocomplete="off">
+                
+                <div class="search-icons search-icons-left">
+                    <i class="fa-solid fa-magnifying-glass" style="font-size: 18px;"></i>
+                </div>
+                
+                <div class="search-icons search-icons-right" id="mic-container">
+                    <i class="fa-solid fa-microphone mic-icon" id="mic-icon" style="font-size: 22px;"></i>
+                </div>
+            </div>
+
+            <div class="buttons">
+                <button class="btn" id="search-btn">Pesquisar no Bratec</button>
+                <button class="btn" id="lucky-btn">Estou com sorte</button>
+            </div>
+        </div>
+
+        <footer>
+            <div class="footer-top">
+                <span>Brasil</span>
+            </div>
+            <div class="footer-bottom">
+                <div>
+                    <a href="#" class="footer-link">Sobre</a>
+                    <a href="#" class="footer-link">Publicidade</a>
+                    <a href="#" class="footer-link">Negócios</a>
+                    <a href="#" class="footer-link">Como funciona o Bratec</a>
+                </div>
+                <div>
+                    <a href="#" class="footer-link">Privacidade</a>
+                    <a href="#" class="footer-link">Termos</a>
+                    <a href="#" class="footer-link">Configurações</a>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- ==================== RESULTS PAGE ==================== -->
+    <div id="results-page" class="results-page">
+        <div class="results-header">
+            <div class="results-logo" onclick="goHome()">
+                <span>B</span><span>r</span><span>a</span><span>t</span><span>e</span><span>c</span>
+            </div>
+            
+            <div class="results-search-container">
+                <input type="text" id="results-search-input" class="results-search-bar" autocomplete="off">
+                <div class="results-icons results-icons-left">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </div>
+                <div class="results-icons results-icons-right" id="results-mic-container">
+                    <i class="fa-solid fa-microphone" id="results-mic-icon"></i>
+                </div>
+            </div>
+
+            <div style="margin-left: auto; display: flex; align-items: center; gap: 20px;">
+                <div class="apps-icon">
+                    <i class="fa-solid fa-grip-vertical" style="font-size: 22px; color: #5f6368;"></i>
+                </div>
+                <div class="avatar">D</div>
+            </div>
+        </div>
+
+        <div class="results-content">
+            <div class="results-stats" id="results-stats"></div>
+            <div id="results-list"></div>
+        </div>
+    </div>
+
+    <script>
+        const mockDatabase = [
+            {
+                title: "Bratec - A busca que entende o Brasil",
+                url: "https://bratec-science.com.br",
+                snippet: "O mecanismo de busca mais inteligente do país. Tecnologia brasileira com IA avançada."
+            },
+            {
+                title: "Github - Rede Social de desevolvedores",
+                url: "https://github.com",
+                snippet: "Rede social de programadores e de empresas"
+            },
+            {
+                title: "Google",
+                url:"https://www.google.com",
+                snippet: "Caso não ache o que você queria procure no google"
+            },
+            {
+                title: "Notícias - G1",
+                url: "https://g1.globo.com",
+                snippet: "Últimas notícias do Brasil e do mundo. Atualização em tempo real."
+            },
+            {
+                title: "Notícias - Uol",
+                url: "https://uol.com.br",
+                snippet: "Últimas notícias do Brasil e do mundo. Atualização em tempo real."
+            },
+            {
+                title: "Repórter Cbn",
+                url: "https://cbn.globo.com",
+                snippet: "Site de notícias"
+            },
+            {
+                title: "YouTube",
+                url: "https://youtube.com",
+                snippet: "Assista vídeos, lives e muito mais. O maior site de vídeos do planeta."
+            },
+            {
+                title: "Wikipedia - A enciclopédia livre",
+                url: "https://pt.wikipedia.org",
+                snippet: "Conheça o mundo através do maior conhecimento coletivo da humanidade."
+            },
+            {
+                title: "Mercado Livre - Compre e venda no Brasil",
+                url: "https://mercadolivre.com.br",
+                snippet: "Milhões de produtos com entrega rápida e segura."
+            },
+            {
+                title: "Netflix Brasil",
+                url: "https://netflix.com/br",
+                snippet: "Filmes, séries e documentários ilimitados."
+            },
+            {
+                title: "Como aprender programação em 2026",
+                url: "https://dev.to/br",
+                snippet: "Guia completo para quem quer entrar na área de tecnologia."
+            },
+            {
+                title: "Clima em Minas Gerais",
+                url: "https://climatempo.com.br",
+                snippet: "Previsão do tempo para Belo Horizonte e todo o estado."
+            },
+            {
+                title: "ChatGPT - OpenAI",
+                url: "https://chat.openai.com",
+                snippet: "A IA mais poderosa do mundo agora com suporte total ao português."
+            }
+        ];
+
+        // ==================== ELEMENTOS ====================
+        const homepage = document.getElementById('homepage');
+        const resultsPage = document.getElementById('results-page');
+        const searchInput = document.getElementById('search-input');
+        const resultsSearchInput = document.getElementById('results-search-input');
+        const resultsList = document.getElementById('results-list');
+        const resultsStats = document.getElementById('results-stats');
+
+        // ==================== BUSCA ====================
+        function performSearch(query) {
+            if (!query || query.trim() === '') return;
+
+            homepage.style.display = 'none';
+            resultsPage.style.display = 'flex';
+
+            resultsSearchInput.value = query;
+
+            const lowerQuery = query.toLowerCase();
+            const filtered = mockDatabase.filter(item =>
+                item.title.toLowerCase().includes(lowerQuery) ||
+                item.snippet.toLowerCase().includes(lowerQuery)
+            );
+
+            const resultsToShow = filtered.length > 0 ? filtered : mockDatabase;
+
+            resultsList.innerHTML = '';
+
+            resultsStats.textContent = `Aproximadamente ${resultsToShow.length * 123000} resultados (${(Math.random() * 0.3 + 0.1).toFixed(2)} segundos)`;
+
+            resultsToShow.forEach(result => {
+                const div = document.createElement('div');
+                div.className = 'result-item';
+                div.innerHTML = `
+                    <a href="${result.url}" target="_blank" class="result-url">${result.url}</a>
+                    <a href="${result.url}" target="_blank" class="result-title">${result.title}</a>
+                    <p class="result-snippet">${result.snippet}</p>
+                `;
+                resultsList.appendChild(div);
+            });
+        }
+
+        function imFeelingLucky() {
+            const randomIndex = Math.floor(Math.random() * mockDatabase.length);
+            const lucky = mockDatabase[randomIndex];
+            window.open(lucky.url, '_blank');
+        }
+
+        function goHome() {
+            homepage.style.display = 'flex';
+            resultsPage.style.display = 'none';
+            searchInput.value = '';
+        }
+
+        function initVoiceSearch() {
+            const mic = document.getElementById('mic-icon');
+            const resultsMic = document.getElementById('results-mic-icon');
+
+            if (!('SpeechRecognition' in window) && !('webkitSpeechRecognition' in window)) {
+                mic.style.opacity = '0.4';
+                resultsMic.style.opacity = '0.4';
+                return;
+            }
+
+            const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+            const recognition = new SpeechRecognition();
+            recognition.lang = 'pt-BR';
+            recognition.interimResults = false;
+
+            function startListening(micElement, targetInput) {
+                micElement.style.color = '#34a853';
+                recognition.start();
+            }
+
+            recognition.onresult = (event) => {
+                const transcript = event.results[0][0].transcript;
+                searchInput.value = transcript;
+                resultsSearchInput.value = transcript;
+                performSearch(transcript);
+            };
+
+            recognition.onerror = () => {
+                mic.style.color = '#4285f4';
+                resultsMic.style.color = '#4285f4';
+            };
+
+            recognition.onend = () => {
+                mic.style.color = '#4285f4';
+                resultsMic.style.color = '#4285f4';
+            };
+
+            mic.addEventListener('click', () => startListening(mic, searchInput));
+            resultsMic.addEventListener('click', () => startListening(resultsMic, resultsSearchInput));
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            searchInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') performSearch(searchInput.value);
+            });
+
+            resultsSearchInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') performSearch(resultsSearchInput.value);
+            });
+
+            document.getElementById('search-btn').addEventListener('click', () => {
+                performSearch(searchInput.value);
+            });
+
+            document.getElementById('lucky-btn').addEventListener('click', imFeelingLucky);
+
+            initVoiceSearch();
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === '/' && document.activeElement.tagName !== 'INPUT') {
+                    e.preventDefault();
+                    if (homepage.style.display !== 'none') {
+                        searchInput.focus();
+                    } else {
+                        resultsSearchInput.focus();
+                    }
+                }
+            })
+
+            setTimeout(() => {
+                searchInput.focus();
+            }, 600);
+        });
+    </script>
+</body>
+</html>
