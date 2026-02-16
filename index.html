@@ -30,7 +30,6 @@
             flex-direction: column;
         }
 
-        /* ==================== HEADER ==================== */
         header {
             display: flex;
             justify-content: flex-end;
@@ -79,7 +78,6 @@
             cursor: pointer;
         }
 
-        /* ==================== HOMEPAGE ==================== */
         .homepage {
             flex: 1;
             display: flex;
@@ -184,7 +182,6 @@
             border: 1px solid #dadce0;
         }
 
-        /* ==================== RESULTS PAGE ==================== */
         .results-page {
             display: none;
             flex-direction: column;
@@ -288,13 +285,6 @@
             line-height: 1.4;
         }
 
-        .no-results {
-            font-size: 18px;
-            color: #202124;
-            margin-top: 40px;
-        }
-
-        /* ==================== FOOTER ==================== */
         footer {
             margin-top: auto;
             background: #f2f2f2;
@@ -326,7 +316,6 @@
             text-decoration: underline;
         }
 
-        /* Responsivo */
         @media (max-width: 700px) {
             .search-container {
                 width: 90%;
@@ -339,15 +328,10 @@
 </head>
 <body>
 
-    <!-- ==================== HOMEPAGE ==================== -->
     <div id="homepage">
         <header>
-            <a href="#" class="header-link">Gmail</a>
-            <a href="#" class="header-link">Imagens</a>
-            <div class="apps-icon">
-                <i class="fa-solid fa-grip-vertical" style="font-size: 22px; color: #5f6368;"></i>
-            </div>
-            <div class="avatar">D</div>
+            <a href="https://mail.google.com" class="header-link">Gmail</a>
+            <a href="https://www.google.com/imghp" class="header-link">Imagens</a>
         </header>
 
         <div class="homepage">
@@ -393,7 +377,6 @@
         </footer>
     </div>
 
-    <!-- ==================== RESULTS PAGE ==================== -->
     <div id="results-page" class="results-page">
         <div class="results-header">
             <div class="results-logo" onclick="goHome()">
@@ -414,7 +397,6 @@
                 <div class="apps-icon">
                     <i class="fa-solid fa-grip-vertical" style="font-size: 22px; color: #5f6368;"></i>
                 </div>
-                <div class="avatar">D</div>
             </div>
         </div>
 
@@ -432,14 +414,24 @@
                 snippet: "O mecanismo de busca mais inteligente do país. Tecnologia brasileira com IA avançada."
             },
             {
-                title: "Github - Rede Social de desevolvedores",
+                title: "Colégio Amorim",
+                url: "https://colegioamorim.com.br",
+                snippet: "Estude no Colégio Amorim"
+            },
+            {
+                title: "Github - Rede Social de desenvolvedores",
                 url: "https://github.com",
                 snippet: "Rede social de programadores e de empresas"
             },
             {
                 title: "Google",
-                url:"https://www.google.com",
-                snippet: "Caso não ache o que você queria procure no google"
+                url: "https://www.google.com",
+                snippet: "Caso não ache o que você queria, procure no google"
+            },
+            {
+                title: "ClowdFlare",
+                url: "https://www.cloudflare.com",
+                snippet: "Site da cloudflare"
             },
             {
                 title: "Notícias - G1",
@@ -477,14 +469,44 @@
                 snippet: "Filmes, séries e documentários ilimitados."
             },
             {
-                title: "Como aprender programação em 2026",
-                url: "https://dev.to/br",
-                snippet: "Guia completo para quem quer entrar na área de tecnologia."
+                title: "Nasa - empresa aeroespacial",
+                url: "https://www.nasa.gov",
+                snippet: "Empresa aeroespacial americana"
             },
             {
-                title: "Clima em Minas Gerais",
-                url: "https://climatempo.com.br",
-                snippet: "Previsão do tempo para Belo Horizonte e todo o estado."
+                title: "Governo Brasileiro",
+                url: "https://www.gov.br",
+                snippet: "Site do governo brasileiro"
+            },
+            {
+                title: "Internet Archive",
+                url: "https://archive.org",
+                snippet: "Arquivo internacional da internet com Máquina do Tempo virtual de sites"
+            },
+            {
+                title: "Twitter",
+                url: "https://www.x.com",
+                snippet: "Rede Social de posts"
+            },
+            {
+                title: "Instagram",
+                url: "https://www.instagram.com",
+                snippet: "Rede Social"
+            },
+            {
+                title: "Facebook",
+                url: "https://www.facebook.com",
+                snippet: "Rede social"
+            },
+            {
+                title: "WhatsApp",
+                url: "https://web.whatsapp.com",
+                snippet: "Site de mensagem"
+            },
+            {
+                title: "Discord",
+                url: "https://discord.com",
+                snippet: "Site de mensagem (com email)"
             },
             {
                 title: "ChatGPT - OpenAI",
@@ -493,7 +515,6 @@
             }
         ];
 
-        // ==================== ELEMENTOS ====================
         const homepage = document.getElementById('homepage');
         const resultsPage = document.getElementById('results-page');
         const searchInput = document.getElementById('search-input');
@@ -501,7 +522,6 @@
         const resultsList = document.getElementById('results-list');
         const resultsStats = document.getElementById('results-stats');
 
-        // ==================== BUSCA ====================
         function performSearch(query) {
             if (!query || query.trim() === '') return;
 
