@@ -285,6 +285,61 @@
             line-height: 1.4;
         }
 
+        .knowledge-panel {
+            background: #fff;
+            border: 1px solid #dadce0;
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 32px;
+            display: flex;
+            align-items: flex-start;
+            gap: 24px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .knowledge-panel img {
+            width: 128px;
+            height: 128px;
+            border-radius: 8px;
+            object-fit: cover;
+            flex-shrink: 0;
+        }
+
+        .knowledge-panel .info h2 {
+            font-size: 22px;
+            font-weight: 500;
+            margin: 0 0 4px 0;
+            color: #1a0dab;
+        }
+
+        .knowledge-panel .info p.desc {
+            color: #4d5156;
+            font-size: 15px;
+            line-height: 1.4;
+            margin: 0 0 16px 0;
+        }
+
+        .knowledge-panel .info .fact {
+            color: #70757a;
+            font-size: 14px;
+            margin-bottom: 6px;
+        }
+
+        .knowledge-panel .info .fact strong {
+            color: #202124;
+            font-weight: 500;
+        }
+
+        .knowledge-panel .info a {
+            color: #1a73e8;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .knowledge-panel .info a:hover {
+            text-decoration: underline;
+        }
+
         footer {
             margin-top: auto;
             background: #f2f2f2;
@@ -429,21 +484,6 @@
                 snippet: "Caso não ache o que você queria, procure no google"
             },
             {
-                title: "CloudFlare",
-                url: "https://www.cloudflare.com",
-                snippet: "Site da cloudflare"
-            },
-            {
-                title: "Booking",
-                url: "https://www.booking.com",
-                snippet: "Site de hospedagem em sua viagem"
-            },
-            {
-                title: "Spoleto - Cozinha Italiana",
-                url: "spoleto.com.br",
-                snippet: "Spoleto é uma empresa de cozinha brasileira, criada por um brasileiro que gostou da cidade em Peruglia chamada Spoleto. O mesmo nome da empresa. Hoje ela pertence ao grupo trigo sediado no Rio de Janeiro."
-            },
-            {
                 title: "Notícias - G1",
                 url: "https://g1.globo.com",
                 snippet: "Últimas notícias do Brasil e do mundo. Atualização em tempo real."
@@ -522,12 +562,48 @@
                 title: "ChatGPT - OpenAI",
                 url: "https://chat.openai.com",
                 snippet: "A IA mais poderosa do mundo agora com suporte total ao português."
+            }
+        ];
+
+        const celebrities = [
+            {
+                name: "Daniel de Morais Soares",
+                description: "Desenvolvedor da Bratec, engenheiro aeroespacial e cientista. Fundador e CEO da Bratec e da rede social ChirpNet",
+                birthDate: "14 de agosto de 2015",
+                knownFor: "Desenvolvimento, redes socias e ciência"
             },
             {
-                title: "Duolingo",
-                url: "https://www.duolingo.com.br",
-                snippet: "Duolingo é um aplicativo de aprendizagem de várias línguas como: Francês, japonês, inglês (língua principal), Italiano e etc."
-            }
+                name: "Elon Musk",
+                image: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/Elon_Musk_Royal_Society_%28crop1%29.jpg/800px-Elon_Musk_Royal_Society_%28crop1%29.jpg",
+                description: "Empresário, engenheiro e filantropo sul-africano. Fundador da SpaceX, CEO da Tesla e proprietário do X.",
+                birthDate: "28 de junho de 1971",
+                knownFor: "Exploração espacial, veículos elétricos e redes sociais",
+                url: "https://pt.wikipedia.org/wiki/Elon_Musk"
+            },
+            {
+                name: "Cristiano Ronaldo",
+                image: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Portugal_2018_Cristiano_Ronaldo.jpg/800px-Portugal_2018_Cristiano_Ronaldo.jpg",
+                description: "Jogador de futebol profissional português, considerado um dos melhores da história.",
+                birthDate: "5 de fevereiro de 1985",
+                knownFor: "Recordes de gols, bolas de ouro",
+                url: "https://pt.wikipedia.org/wiki/Cristiano_Ronaldo"
+            },
+            {
+                name: "Larry Page",
+                image: "data:image/webp;base64,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",
+                description: "Proprietário, CEO da Google, empresário e um dos homens mais ricos do mundo",
+                birthDate: "26 de Março de 1973",
+                knownFor: "Filantropia, Google e riqueza",
+                url: "https://pt.wikipedia.org/wiki/Larry_Page"
+            },
+            {
+                name: "Anitta",
+                image: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Anitta_2022.jpg/800px-Anitta_2022.jpg",
+                description: "Cantora, compositora e dançarina brasileira, uma das maiores estrelas do pop latino.",
+                birthDate: "30 de março de 1993",
+                knownFor: "Música pop, funk e colaborações internacionais",
+                url: "https://pt.wikipedia.org/wiki/Anitta"
+            },
         ];
 
         const homepage = document.getElementById('homepage');
@@ -553,20 +629,41 @@
 
             const resultsToShow = filtered.length > 0 ? filtered : mockDatabase;
 
-            resultsList.innerHTML = '';
-
             resultsStats.textContent = `Aproximadamente ${resultsToShow.length * 123000} resultados (${(Math.random() * 0.3 + 0.1).toFixed(2)} segundos)`;
 
-            resultsToShow.forEach(result => {
-                const div = document.createElement('div');
-                div.className = 'result-item';
-                div.innerHTML = `
-                    <a href="${result.url}" target="_blank" class="result-url">${result.url}</a>
-                    <a href="${result.url}" target="_blank" class="result-title">${result.title}</a>
-                    <p class="result-snippet">${result.snippet}</p>
+            let knowledgePanel = '';
+            const celeb = celebrities.find(c => 
+                lowerQuery.includes(c.name.toLowerCase()) || 
+                c.name.toLowerCase().includes(lowerQuery)
+            );
+
+            if (celeb) {
+                knowledgePanel = `
+                    <div class="knowledge-panel">
+                        <img src="${celeb.image}" alt="${celeb.name}">
+                        <div class="info">
+                            <h2>${celeb.name}</h2>
+                            <p class="desc">${celeb.description}</p>
+                            <div class="fact"><strong>Nascimento:</strong> ${celeb.birthDate}</div>
+                            <div class="fact"><strong>Conhecido por:</strong> ${celeb.knownFor}</div>
+                            <a href="${celeb.url}" target="_blank">Ver mais na Wikipedia →</a>
+                        </div>
+                    </div>
                 `;
-                resultsList.appendChild(div);
+            }
+
+            let resultsHTML = '';
+            resultsToShow.forEach(result => {
+                resultsHTML += `
+                    <div class="result-item">
+                        <a href="${result.url}" target="_blank" class="result-url">${result.url}</a>
+                        <a href="${result.url}" target="_blank" class="result-title">${result.title}</a>
+                        <p class="result-snippet">${result.snippet}</p>
+                    </div>
+                `;
             });
+
+            resultsList.innerHTML = knowledgePanel + resultsHTML;
         }
 
         function imFeelingLucky() {
