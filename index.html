@@ -9,10 +9,10 @@
         @import url('https://fonts.googleapis.com/css2?family=Product+Sans:wght@400;500&display=swap');
 
         :root {
-            --google-blue: #4285f4;
-            --google-red: #ea4335;
-            --google-yellow: #fbbc05;
-            --google-green: #34a853;
+            --google-blue: #0000FF;
+            --google-red: #FF0000;
+            --google-yellow: #FFFF00;
+            --google-green: #008000;
         }
 
         * {
@@ -340,6 +340,10 @@
             text-decoration: underline;
         }
 
+        .logo .exclamation {
+            color: #0000FF
+        }
+
         footer {
             margin-top: auto;
             background: #f2f2f2;
@@ -387,11 +391,12 @@
         <header>
             <a href="https://mail.google.com" class="header-link">Gmail</a>
             <a href="https://www.google.com/imghp" class="header-link">Imagens</a>
+            <a href="https://github.com/danielbratec/bratec"> Bratec Github</a>
         </header>
 
         <div class="homepage">
             <div class="logo">
-                <span>B</span><span>r</span><span>a</span><span>t</span><span>e</span><span>c</span>
+                <span>B</span><span>r</span><span>a</span><span>t</span><span>e</span><span>c</span><span class="exclamation">!</span>
             </div>
 
             <div class="search-container">
@@ -435,7 +440,7 @@
     <div id="results-page" class="results-page">
         <div class="results-header">
             <div class="results-logo" onclick="goHome()">
-                <span>B</span><span>r</span><span>a</span><span>t</span><span>e</span><span>c</span>
+                <span>B</span><span>r</span><span>a</span><span>t</span><span>e</span><span>c</span><span class="exclamation">!</span>
             </div>
             
             <div class="results-search-container">
